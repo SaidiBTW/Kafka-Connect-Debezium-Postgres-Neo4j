@@ -1,0 +1,27 @@
+{
+    "name": "Neo4jSinkConnectorAVRO",
+    "config": {
+      "topics": "JDBC.test_db.Product,DEBEZIUM.test_db..public.product",
+      "connector.class": "org.neo4j.connectors.kafka.sink.Neo4jConnector",
+      "key.converter": "io.confluent.connect.avro.AvroConverter",
+      "key.converter.schema.registry.url": "http://schema-registry:8081",
+      "value.converter": "io.confluent.connect.avro.AvroConverter",
+      "error.tolerance": "all",
+      "errors.log.enable": "true",
+      "errors.log.include.messages": "true",
+      "value.converter.schema.registry.url": "http://schema-registry:8081",
+      "neo4j.uri": "neo4j://neo4j:7687",
+      "neo4j.authentication.type": "BASIC",
+      "neo4j.authentication.basic.username": "neo4j",
+      "neo4j.authentication.basic.password": "pacaya2024",
+      "neo4j.pattern.topic.JDBC.test_db.Product": "(:Product{!id: Id, name: Product_Name})",
+      "neo4j.pattern.topic.DEBEZIUM.test_db..public.product": "(:ProductPostgres{!id: after.id, name: after.product_name})",
+      "transforms": "TimestampConverter,TimestampConvertDebezium",
+      "transforms.TimestampConverter.type": "org.apache.kafka.connect.transforms.TimestampConverter$Value",
+      "transforms.TimestampConverter.field": "Timest",
+      "transforms.TimestampConverter.target.type": "unix",
+      "transforms.TimestampConvertDebezium.type": "org.apache.kafka.connect.transforms.TimestampConverter$Value",
+      "transforms.TimestampConvertDebezium.field": "after.timest",
+      "transforms.TimestampConvertDebezium.target.type": "unix"
+    }
+  }
