@@ -2,7 +2,7 @@
     "name": "mysql-jdbc-product-00",
     "config": {
               "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
-              "connection.url": "jdbc:mysql://mysql:3306/test_db?allowPublicKeyRetrieval=true&useSSL=false",
+              "connection.url": "{MYSQL_CONNECTION_URL}",
               "connection.user" : "root",
               "connection.password": "root",
               "numeric.mapping" : "best_fit",
